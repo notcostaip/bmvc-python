@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TechStore — Catalogo de Produtos | BMVC Python</title>
+  <meta name="description" content="Catalogo de produtos de tecnologia desenvolvido com arquitetura BMVC em Python e Orientacao a Objetos." />
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+
+  <!-- ===== HEADER ===== -->
+  <header>
+    <div class="nav-inner">
+
+      <!-- Logo: icone de loja (tag de preco) -->
+      <a href="/" class="logo" id="logo-link">
+        <div class="logo-mark">
+          <!-- tag / label — icone de loja/produto -->
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/>
+            <line x1="7" y1="7" x2="7.01" y2="7"/>
+          </svg>
+        </div>
+        TechStore
+      </a>
+
+      <nav>
+        <a href="#produtos" id="nav-produtos">Catalogo</a>
+        <a href="#sobre"    id="nav-sobre">Sobre</a>
+        <a href="#"         id="btn-open-modal" class="btn-nav">Adicionar</a>
+
+        <!-- Botao do carrinho -->
+        <button class="cart-btn" id="btn-open-cart" aria-label="Abrir carrinho" style="margin-left:0.5rem">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="9"  cy="21" r="1"/>
+            <circle cx="20" cy="21" r="1"/>
+            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+          </svg>
+          <span class="cart-badge" id="cart-badge">0</span>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero">
+    <div class="hero-content">
+      <div class="hero-label">
+        <span class="hero-label-dot"></span>
+        BMVC Python — Projeto OO
+      </div>
+
+      <h1 class="hero-title">
+        O melhor em<br>
+        <em>Tecnologia</em><br>
+        esta aqui.
+      </h1>
+
+      <p class="hero-desc">
+        Catalogo dinamico construido com arquitetura
+        <strong style="color:var(--text-300)">BMVC em Python puro</strong>
+        e Orientacao a Objetos. Nenhuma dependencia externa.
+      </p>
+
+      <div class="hero-actions">
+        <button class="btn-primary" id="btn-ver-produtos"
+          onclick="document.getElementById('produtos').scrollIntoView({ behavior: 'smooth' })">
+          Ver catalogo
+        </button>
+        <button class="btn-outline" id="btn-open-modal-hero">
+          Adicionar produto
+        </button>
+      </div>
+    </div>
+
+    <!-- Stats card -->
+    <div class="hero-visual">
+      <div class="stats-card">
+        <div class="stats-card-header">
+          <span class="stats-card-title">Visao geral</span>
+          <span class="status-badge">
+            <span class="status-dot"></span>
+            Online
+          </span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">Total de produtos</span>
+          <span class="stat-value accent" id="hero-count">—</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">Categorias</span>
+          <span class="stat-value" id="hero-cats">—</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">Arquitetura</span>
+          <span class="stat-value mono">BMVC / Python 3</span>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SOBRE ===== -->
+  <section class="about-section" id="sobre">
+    <div class="about-inner">
+      <div>
+        <p class="about-label">Sobre o projeto</p>
+        <h2 class="about-title">Arquitetura BMVC<br>em Python puro</h2>
+        <p class="about-desc">
+          Este projeto demonstra a implementacao do padrao <strong style="color:var(--text-300)">Model-View-Controller</strong>
+          utilizando exclusivamente a biblioteca padrao do Python 3, sem frameworks externos.
+          O servidor HTTP, o roteamento, a API REST e a camada de dados sao todos construidos do zero,
+          evidenciando os principios de <strong style="color:var(--text-300)">Orientacao a Objetos</strong>
+          como encapsulamento, getters e setters.
+        </p>
+        <div class="about-tags">
+          <span class="about-tag green">Python 3</span>
+          <span class="about-tag green">BMVC</span>
+          <span class="about-tag green">OO</span>
+          <span class="about-tag">http.server</span>
+          <span class="about-tag">API REST</span>
+          <span class="about-tag">HTML / CSS / JS</span>
+          <span class="about-tag">Zero dependencias</span>
+        </div>
+      </div>
+
+      <div class="arch-list">
+        <!-- Model -->
+        <div class="arch-item">
+          <div class="arch-icon">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <ellipse cx="12" cy="5" rx="9" ry="3"/>
+              <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/>
+              <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/>
+            </svg>
+          </div>
+          <div class="arch-info">
+            <div class="arch-name">Model — produto.py</div>
+            <div class="arch-desc">Dados, atributos privados, getters e setters</div>
+          </div>
+        </div>
+        <!-- View -->
+        <div class="arch-item">
+          <div class="arch-icon">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+              <line x1="3" y1="9"  x2="21" y2="9"/>
+              <line x1="9" y1="21" x2="9"  y2="9"/>
+            </svg>
+          </div>
+          <div class="arch-info">
+            <div class="arch-name">View — index.html</div>
+            <div class="arch-desc">Interface visual com CSS e JS externos</div>
+          </div>
+        </div>
+        <!-- Controller -->
+        <div class="arch-item">
+          <div class="arch-icon">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <polyline points="16 18 22 12 16 6"/>
+              <polyline points="8 6 2 12 8 18"/>
+            </svg>
+          </div>
+          <div class="arch-info">
+            <div class="arch-name">Controller — produto_controller.py</div>
+            <div class="arch-desc">Logica, roteamento e API REST</div>
+          </div>
+        </div>
+        <!-- Server -->
+        <div class="arch-item">
+          <div class="arch-icon">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <rect x="2" y="2" width="20" height="8" rx="2" ry="2"/>
+              <rect x="2" y="14" width="20" height="8" rx="2" ry="2"/>
+              <line x1="6" y1="6"  x2="6.01"  y2="6"/>
+              <line x1="6" y1="18" x2="6.01" y2="18"/>
+            </svg>
+          </div>
+          <div class="arch-info">
+            <div class="arch-name">Server — main.py</div>
+            <div class="arch-desc">Servidor HTTP nativo do Python 3</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PRODUTOS ===== -->
+  <main class="section" id="produtos">
+    <div class="section-header">
+      <div>
+        <h2 class="section-title">Catalogo de produtos</h2>
+        <p class="section-sub">Dados carregados via API REST — Controller Python</p>
+      </div>
+    </div>
+
+    <div class="filters" id="filter-bar">
+      <button class="filter-btn active" id="filter-todos" data-cat="Todos">Todos</button>
+      <button class="filter-btn" id="filter-tech"  data-cat="Tecnologia">Tecnologia</button>
+      <button class="filter-btn" id="filter-peri"  data-cat="Perifericos">Perifericos</button>
+      <button class="filter-btn" id="filter-audio" data-cat="Audio">Audio</button>
+    </div>
+
+    <div class="products-grid" id="products-grid"></div>
+  </main>
+
+  <!-- ===== MODAL — ADICIONAR PRODUTO ===== -->
+  <div class="modal-overlay" id="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-titulo">
+    <div class="modal">
+      <div class="modal-header">
+        <h2 class="modal-title" id="modal-titulo">Adicionar produto</h2>
+        <button class="btn-icon" id="btn-close-modal" aria-label="Fechar modal">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <line x1="18" y1="6" x2="6" y2="18"/>
+            <line x1="6"  y1="6" x2="18" y2="18"/>
+          </svg>
+        </button>
+      </div>
+
+      <form id="form-add" novalidate>
+        <div class="form-group">
+          <label class="form-label" for="input-nome">Nome do produto</label>
+          <input class="form-input" type="text" id="input-nome" placeholder="Ex: Mousepad XL Pro" required />
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="input-desc">Descricao</label>
+          <input class="form-input" type="text" id="input-desc" placeholder="Descricao breve do produto" required />
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="input-preco">Preco (R$)</label>
+            <input class="form-input" type="number" id="input-preco" placeholder="0.00" min="0" step="0.01" required />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="input-cat">Categoria</label>
+            <select class="form-select" id="input-cat" required>
+              <option value="Tecnologia">Tecnologia</option>
+              <option value="Perifericos">Perifericos</option>
+              <option value="Audio">Audio</option>
+            </select>
+          </div>
+        </div>
+        <div class="modal-actions">
+          <button type="submit" class="btn-primary" id="btn-salvar">Salvar produto</button>
+          <button type="button" class="btn-outline" id="btn-cancel">Cancelar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ===== CARRINHO SIDEBAR ===== -->
+  <div class="cart-overlay" id="cart-overlay">
+    <div class="cart-sidebar" id="cart-sidebar">
+
+      <div class="cart-header">
+        <div>
+          <div class="cart-title">Carrinho</div>
+          <div class="cart-count-label" id="cart-count-label">0 itens</div>
+        </div>
+        <button class="btn-icon" id="btn-close-cart" aria-label="Fechar carrinho">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <line x1="18" y1="6" x2="6" y2="18"/>
+            <line x1="6"  y1="6" x2="18" y2="18"/>
+          </svg>
+        </button>
+      </div>
+
+      <div class="cart-body" id="cart-body">
+        <!-- preenchido pelo JS -->
+      </div>
+
+      <div class="cart-footer" id="cart-footer">
+        <!-- preenchido pelo JS -->
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <span class="footer-brand">TechStore</span>
+    <span class="footer-meta">
+      <span>Python 3</span> · BMVC · Orientacao a Objetos · Projeto Academico
+    </span>
+    <span class="footer-meta">created by <span>notcostaip</span></span>
+  </footer>
+
+  <!-- Toast -->
+  <div id="toast"></div>
+
+  <!-- JS externo -->
+  <script src="/static/app.js"></script>
+
+  <script>
+    // Hero "Adicionar produto" abre modal
+    document.getElementById('btn-open-modal-hero')
+      .addEventListener('click', function () {
+        document.getElementById('modal-overlay').classList.add('open');
+        document.getElementById('input-nome').focus();
+      });
+    // Cancelar modal
+    document.getElementById('btn-cancel')
+      .addEventListener('click', function () {
+        document.getElementById('modal-overlay').classList.remove('open');
+      });
+  </script>
+</body>
+</html>
